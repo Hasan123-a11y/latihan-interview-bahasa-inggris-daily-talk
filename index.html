@@ -195,6 +195,16 @@ details.panel>summary::after{content:"";width:10px;height:10px;border-right:2.5p
 details.panel[open]>summary::after{transform:rotate(-135deg);margin-top:4px}
 details.panel[open]>*:not(summary){animation:fadeUp .4s var(--ease) backwards}
 
+
+/* contoh */
+details.tp>summary{align-items:flex-start}
+.sq{display:flex;flex-direction:column;gap:2px;min-width:0}
+.sq b{font:700 15.5px/1.35 var(--f-display)}
+.sq small{font:400 13px/1.4 var(--f-body);color:var(--muted)}
+.tp .bub .btn{margin-top:6px}
+.kpl{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:4px;font-size:14px}
+.helpbtn{display:none;padding:7px 14px;border-radius:999px;background:rgba(255,255,255,.85);color:var(--primary2);font:600 13px var(--f-body);text-decoration:none;box-shadow:0 4px 12px -6px rgba(20,70,110,.35)}
+
 /* HP */
 @media (max-width:640px){
   body{font-size:15px;padding-bottom:calc(96px + env(safe-area-inset-bottom,0px))}
@@ -215,6 +225,8 @@ details.panel[open]>*:not(summary){animation:fadeUp .4s var(--ease) backwards}
   .timer{font-size:30px}
   .btn{min-height:46px}
   .btn.big{width:100%;min-height:58px}
+  .tab[data-t=metode]{display:none}
+  .helpbtn{display:inline-block}
   .todo{padding:14px;gap:12px}
   select,textarea,input[type=text],input[type=number]{font-size:16px}
   .bgfx i{filter:blur(44px)}
@@ -227,11 +239,13 @@ details.panel[open]>*:not(summary){animation:fadeUp .4s var(--ease) backwards}
 <div class="bgfx" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
 <header class="bar"><div class="in">
   <div class="brand"><b>Ngobrol Aussie</b><span>WHV · interview &amp; obrolan harian</span></div>
+  <a class="helpbtn" href="#metode">Panduan</a>
   <nav class="tabs" id="tabs" aria-label="Menu utama">
     <a class="tab" data-t="beranda" href="#beranda">Beranda</a>
     <a class="tab" data-t="anki" href="#anki">Kartu</a>
     <a class="tab" data-t="interview" href="#interview">Interview</a>
     <a class="tab" data-t="dialog" href="#dialog">Dialog</a>
+    <a class="tab" data-t="contoh" href="#contoh">Contoh</a>
     <a class="tab" data-t="metode" href="#metode">Panduan</a>
   </nav>
 </div></header>
@@ -244,6 +258,7 @@ details.panel[open]>*:not(summary){animation:fadeUp .4s var(--ease) backwards}
 
 /* ============ DATA ============ */
 var DECKS=[
+  {id:'basa',name:'Basa-basi & pembuka',sub:'Sapaan, terima kasih, tanya lowongan'},
   {id:'daily',name:'Sehari-hari',sub:'Kafe, toko, transport, kamar'},
   {id:'interview',name:'Interview',sub:'Frasa kunci wawancara kerja'},
   {id:'work',name:'Kerja & gaji',sub:'Roster, super, shift, izin'},
@@ -256,6 +271,50 @@ var DECKS=[
   {id:'mine',name:'Kalimat saya',sub:'Disimpan dari dialog & interview'}
 ];
 var RAW={
+ basa:[
+  ["Hi, how are you going?","Hai, apa kabar?"],
+  ["Hello, how are you?","Halo, apa kabar?"],
+  ["I'm good, thanks. How are you?","Saya baik, terima kasih. Kamu bagaimana?"],
+  ["Not bad, thanks. Yourself?","Lumayan, terima kasih. Kamu sendiri?"],
+  ["Very well, thank you.","Baik sekali, terima kasih."],
+  ["How's it going?","Gimana kabarnya?"],
+  ["Nice to meet you.","Senang bertemu denganmu."],
+  ["Thanks for coming in.","Terima kasih sudah datang."],
+  ["Thank you for having me.","Terima kasih sudah menerima saya."],
+  ["Did you find the place okay?","Apakah kamu menemukan tempatnya dengan mudah?"],
+  ["Please, have a seat.","Silakan duduk."],
+  ["Sorry, are you currently hiring?","Maaf, apakah kalian sedang membuka lowongan?"],
+  ["Did you bring your resume?","Apakah kamu membawa CV?"],
+  ["Yes, I brought it with me.","Ya, saya membawanya."],
+  ["Do you have any experience?","Apakah kamu punya pengalaman?"],
+  ["Yeah, I worked at a cafe in Indonesia before.","Ya, saya pernah bekerja di kafe di Indonesia."],
+  ["What's your phone number?","Berapa nomor teleponmu?"],
+  ["We're gonna give you a call, alright?","Kami akan menghubungimu, ya?"],
+  ["Sounds good. Thanks so much!","Siap. Terima kasih banyak!"],
+  ["Hot enough for you today?", "Panas sekali ya hari ini?"],
+  ["It's a scorcher!", "Panas terik sekali!"],
+  ["I'm still getting used to the heat.", "Saya masih membiasakan diri dengan panasnya."],
+  ["How long have you been in Australia?", "Sudah berapa lama kamu di Australia?"],
+  ["I've been here for about two months.", "Saya sudah di sini sekitar dua bulan."],
+  ["Are you enjoying it so far?", "Apakah kamu menikmatinya sejauh ini?"],
+  ["Where are you from in Indonesia?", "Kamu dari mana di Indonesia?"],
+  ["Have you ever been to Indonesia?", "Pernahkah kamu ke Indonesia?"],
+  ["What did you get up to on the weekend?", "Kamu ngapain saja akhir pekan kemarin?"],
+  ["Can I get you a glass of water or a coffee?", "Mau segelas air atau kopi?"],
+  ["A glass of water would be great, thanks.", "Segelas air boleh, terima kasih."],
+  ["I'm all good, thanks.", "Tidak usah, terima kasih."],
+  ["Did you find us okay?", "Apakah kamu menemukan kami dengan mudah?"],
+  ["Sorry, could you say that again, please?", "Maaf, bisa diulang?"],
+  ["Could you speak a little slower, please?", "Bisa bicara sedikit lebih pelan?"],
+  ["I'm ready when you are.", "Saya siap kapan saja."],
+  ["Thanks for your time. We'll be in touch.", "Terima kasih atas waktunya. Kami akan menghubungimu."],
+  ["I look forward to hearing from you.", "Saya menantikan kabar darimu."],
+  ["It was great to meet you.", "Senang sekali bertemu denganmu."],
+  ["Have a good one!", "Semoga harimu menyenangkan!"],
+  ["No worries. Catch you later.", "Tidak masalah. Sampai nanti."],
+  ["Can you start on Monday?", "Bisakah kamu mulai hari Senin?"],
+  ["How's your day going?", "Bagaimana harimu?"]
+ ],
  daily:[
   ["Can I get a flat white, please?","Boleh saya pesan flat white?"],
   ["Takeaway or eat in?","Dibawa pulang atau makan di sini?"],
@@ -400,6 +459,7 @@ var RAW={
 };
 
 var IV_SETS=[
+ {id:'basa',name:'Basa-basi pembuka',sub:'Sapaan di awal. Jangan dilewatkan!'},
  {id:'umum',name:'Umum',sub:'Dipakai di semua jenis kerja'},
  {id:'farm',name:'Kebun & farm',sub:'Fruit picking, panen, packing'},
  {id:'cafe',name:'Kafe & restoran',sub:'Barista, waiter, kitchen hand'},
@@ -408,6 +468,71 @@ var IV_SETS=[
  {id:'retail',name:'Retail & toko',sub:'Kasir, shop assistant'}
 ];
 var IV_Q=[
+
+ {id:'b1',set:'basa',q:"Hi, how are you going today?",iq:"Hai, apa kabar hari ini?",
+  a:"Hi, I'm good, thank you. How are you?",
+  tip:"Selalu balas sapaan, lalu tanya balik. Jangan hanya menjawab 'fine' dan diam.",
+  kp:[["good, thank you","I'm good, thank you","Saya baik, terima kasih"],["How are you?","How are you?","Apa kabar?"],["Not bad","Not bad, thanks. Yourself?","Lumayan. Kamu sendiri?"]]},
+ {id:'b2',set:'basa',q:"Thanks for coming in. Did you find the place okay?",iq:"Terima kasih sudah datang. Apakah kamu menemukan tempatnya dengan mudah?",
+  a:"Yes, no worries, it was easy to find. Thank you for having me.",
+  tip:"Ucapkan terima kasih ('Thank you for having me') dan beri jawaban pendek yang ramah.",
+  kp:[["Thank you for having me","Thank you for having me","Terima kasih sudah menerima saya"],["no worries","No worries, it was easy to find","Tidak masalah, mudah ditemukan"]]},
+ {id:'b3',set:'basa',q:"Did you bring a copy of your resume?",iq:"Apakah kamu membawa salinan CV?",
+  a:"Yes, I did. Here you go. I've also put my phone number on it.",
+  tip:"Jawab 'Yes, I brought it' lalu langsung serahkan. Pakai 'brought' (lampau), bukan 'bring'.",
+  kp:[["brought","I brought it with me","Saya membawanya"],["Here you go","Here you go","Ini, silakan"]]},
+ {id:'b4',set:'basa',q:"We'll give you a call. Is this the best number to reach you?",iq:"Kami akan menghubungimu. Apakah ini nomor terbaik untuk menghubungimu?",
+  a:"Yes, that's my number. Thank you so much for your time. I look forward to hearing from you.",
+  tip:"Tutup dengan terima kasih, lalu 'I look forward to hearing from you'.",
+  kp:[["your time","Thank you for your time","Terima kasih atas waktunya"],["look forward","I look forward to hearing from you","Saya menantikan kabar darimu"]]},
+ {id:"b5",set:"basa",q:"How's your day been so far?",iq:"Bagaimana harimu sejauh ini?",
+  a:"It's been good, thanks. A bit busy this morning, but I'm glad to be here. How about yours?",
+  tip:"Jawab singkat dan positif, lalu tanya balik.",
+  kp:[["been good", "It's been good, thanks", "Hariku baik, terima kasih"], ["How about yours?", "How about yours?", "Kalau harimu bagaimana?"]]},
+ {id:"b6",set:"basa",q:"Hot enough for you today?",iq:"Panas sekali ya hari ini?",
+  a:"Yeah, it's a scorcher! I'm still getting used to the Aussie heat, but I love the sunshine.",
+  tip:"Cuaca adalah basa-basi favorit orang Aussie. Setuju, lalu tambahkan satu komentar.",
+  kp:[["scorcher", "It's a scorcher", "Panas terik sekali"], ["getting used to", "I'm still getting used to it", "Saya masih membiasakan diri"]]},
+ {id:"b7",set:"basa",q:"How long have you been in Australia?",iq:"Sudah berapa lama kamu di Australia?",
+  a:"I've been here for about two months. I'm really enjoying it so far.",
+  tip:"Pakai 'I've been here for ...' (bukan 'I am here since'). Sesuaikan lamanya dengan kenyataanmu.",
+  kp:[["been here for", "I've been here for about two months", "Saya sudah di sini sekitar dua bulan"], ["so far", "I'm enjoying it so far", "Sejauh ini saya menikmatinya"]]},
+ {id:"b8",set:"basa",q:"Where are you from in Indonesia?",iq:"Kamu berasal dari mana di Indonesia?",
+  a:"I'm from Java. It's a small city, but it's really nice. Have you ever been to Indonesia?",
+  tip:"Sebut nama daerah/kota, satu kalimat tentangnya, lalu tanya balik.",
+  kp:[["I'm from", "I'm from Java", "Saya berasal dari Jawa"], ["Have you ever been", "Have you ever been to Indonesia?", "Pernahkah kamu ke Indonesia?"]]},
+ {id:"b9",set:"basa",q:"How did you get here today?",iq:"Tadi kamu ke sini naik apa?",
+  a:"I came by train, and then I walked about ten minutes. It was easy to find.",
+  tip:"Pakai lampau (came, walked) karena sudah terjadi.",
+  kp:[["by train", "I came by train", "Saya naik kereta"], ["easy to find", "It was easy to find", "Mudah ditemukan"]]},
+ {id:"b10",set:"basa",q:"Would you like a glass of water or a coffee?",iq:"Mau segelas air atau kopi?",
+  a:"A glass of water would be great, thank you.",
+  tip:"Menolak dengan sopan: \"I'm all good, thanks.\" Menerima: \"... would be great, thank you.\"",
+  kp:[["would be great", "A glass of water would be great", "Segelas air boleh juga"], ["I'm all good", "I'm all good, thanks", "Tidak usah, terima kasih"]]},
+ {id:"b11",set:"basa",q:"Are you enjoying Australia so far?",iq:"Apakah kamu menikmati Australia sejauh ini?",
+  a:"Yes, I love it. The people are really friendly, and the beaches are beautiful.",
+  tip:"Beri alasan konkret, bukan hanya 'yes'.",
+  kp:[["I love it", "Yes, I love it", "Ya, saya suka sekali"], ["friendly", "The people are really friendly", "Orang-orangnya ramah sekali"]]},
+ {id:"b12",set:"basa",q:"Nice to meet you. I'm Dave, the manager.",iq:"Senang bertemu denganmu. Saya Dave, manajernya.",
+  a:"Nice to meet you, Dave. I'm {name}.",
+  tip:"Jabat tangan, kontak mata, dan senyum. Ulangi nama lawan bicara agar mudah diingat.",
+  kp:[["Nice to meet you", "Nice to meet you", "Senang bertemu denganmu"], ["I'm", "I'm {name}", "Saya {name}"]]},
+ {id:"b13",set:"basa",q:"What did you get up to on the weekend?",iq:"Kamu ngapain saja akhir pekan kemarin?",
+  a:"Not much, I just relaxed and explored the city a bit. How about you?",
+  tip:"'Get up to' artinya 'melakukan'. Jawab pendek lalu tanya balik.",
+  kp:[["get up to", "What did you get up to?", "Kamu ngapain saja?"], ["explored", "I explored the city a bit", "Saya menjelajahi kota sedikit"]]},
+ {id:"b14",set:"basa",q:"Thanks for your time. We'll be in touch.",iq:"Terima kasih atas waktunya. Kami akan menghubungimu.",
+  a:"Thank you so much for your time. It was great to meet you. Have a good one!",
+  tip:"Tutup dengan hangat. 'Have a good one' adalah pamitan santai khas Aussie.",
+  kp:[["great to meet you", "It was great to meet you", "Senang sekali bertemu denganmu"], ["Have a good one", "Have a good one!", "Semoga harimu menyenangkan"]]},
+ {id:"b15",set:"basa",q:"Sorry, I talk fast sometimes. Are you following me okay?",iq:"Maaf, kadang saya bicara cepat. Apakah kamu mengikuti?",
+  a:"Yes, I'm following. Sorry, could you speak a little slower, please?",
+  tip:"Meminta diulang itu wajar dan sopan. Jangan pura-pura paham.",
+  kp:[["Could you", "Could you say that again, please?", "Bisa diulang?"], ["a little slower", "Could you speak a little slower?", "Bisa bicara sedikit lebih pelan?"]]},
+ {id:"b16",set:"basa",q:"Shall we get started?",iq:"Kita mulai sekarang?",
+  a:"Yes, sure. I'm ready when you are.",
+  tip:"Jawaban singkat dan percaya diri.",
+  kp:[["ready when you are", "I'm ready when you are", "Saya siap kapan saja"]]},
  {id:'u1',set:'umum',q:"Tell me a little bit about yourself.",iq:"Ceritakan sedikit tentang dirimu.",
   a:"Hi, my name is {name}. I'm from Indonesia, and I'm here in Australia on a working holiday visa. I have {yrs} of experience as {job}, so I'm used to working with customers and following instructions. People say I'm very {strength}, and I learn quickly. I'm really keen to get some good Australian work experience.",
   tip:"Format 4 kalimat: nama dan asal, pengalaman, sifat, alasan kamu di sini. Maksimal 40 detik.",
@@ -549,10 +674,160 @@ var IV_Q=[
  {id:'r4',set:'retail',q:"Are you comfortable standing for long periods?",iq:"Nyaman berdiri dalam waktu lama?",
   a:"Yes, I'm used to being on my feet all day. I wear comfortable shoes, take my breaks and stay positive when it's busy.",
   tip:"Jawab singkat dan beri kebiasaan nyata.",
-  kp:[["on my feet","on my feet all day","berdiri sepanjang hari"],["breaks","take my breaks","ambil waktu istirahat"],["positive","stay positive","tetap positif"]]}
+  kp:[["on my feet","on my feet all day","berdiri sepanjang hari"],["breaks","take my breaks","ambil waktu istirahat"],["positive","stay positive","tetap positif"]]},
+ {id:"u19",set:"umum",q:"Can you start on Monday?",iq:"Bisakah kamu mulai hari Senin?",
+  a:"Yes, I can start on Monday. What time should I be here, and is there anything I need to bring?",
+  tip:"Jawab ya, lalu tanyakan jam dan barang yang perlu dibawa.",
+  kp:[["I can start", "I can start on Monday", "Saya bisa mulai hari Senin"], ["anything I need to bring", "Is there anything I need to bring?", "Ada yang perlu saya bawa?"]]},
+ {id:"u20",set:"umum",q:"Do you have your own transport?",iq:"Apakah kamu punya kendaraan sendiri?",
+  a:"I can get here on time by public transport. It takes about twenty minutes, so I won't be late.",
+  tip:"Jawab jujur sesuai kondisimu, lalu yakinkan soal ketepatan waktu.",
+  kp:[["public transport", "I come by public transport", "Saya naik transportasi umum"], ["on time", "I can get here on time", "Saya bisa tiba tepat waktu"]]},
+ {id:"u21",set:"umum",q:"Are you okay with early starts and working weekends?",iq:"Apakah kamu oke dengan mulai pagi dan kerja akhir pekan?",
+  a:"Yes, no problem. I'm flexible, and I'm happy to work early mornings and weekends.",
+  tip:"Tunjukkan fleksibilitas, tapi hanya janji yang benar-benar bisa kamu tepati.",
+  kp:[["flexible", "I'm flexible", "Saya fleksibel"], ["no problem", "Yes, no problem", "Ya, tidak masalah"]]},
+ {id:"u22",set:"umum",q:"How long is your visa valid for?",iq:"Berapa lama visamu berlaku?",
+  a:"I have a working holiday visa that's valid for another ten months. I'm happy to show you my VEVO details.",
+  tip:"Sesuaikan masa berlaku dengan visamu. VEVO adalah cara cek status visa resmi.",
+  kp:[["valid for", "It's valid for another ten months", "Berlaku sepuluh bulan lagi"], ["VEVO", "I can show you my VEVO details", "Saya bisa tunjukkan detail VEVO"]]},
+ {id:"u23",set:"umum",q:"Why should we hire you?",iq:"Kenapa kami harus mempekerjakanmu?",
+  a:"I'm reliable, I learn quickly, and I'm not afraid of hard work. I always turn up on time, and I'm happy to do whatever the team needs.",
+  tip:"Tiga sifat + bukti singkat. Jangan merendahkan pesaing.",
+  kp:[["turn up on time", "I always turn up on time", "Saya selalu datang tepat waktu"], ["whatever the team needs", "I'll do whatever the team needs", "Saya siap melakukan apa yang tim butuhkan"]]},
+ {id:"u24",set:"umum",q:"What would your last boss say about you?",iq:"Apa kata bosmu yang terakhir tentang dirimu?",
+  a:"I think they'd say I'm reliable and hard-working. I always showed up on time, and I was happy to help out wherever I was needed.",
+  tip:"Pakai 'they'd say' dan sifat yang bisa dibuktikan.",
+  kp:[["reliable", "I'm reliable", "Saya bisa diandalkan"], ["help out", "I was happy to help out", "Saya senang membantu"]]},
+ {id:"u25",set:"umum",q:"How do you deal with stress or busy periods?",iq:"Bagaimana kamu menghadapi stres atau saat sibuk?",
+  a:"I stay calm and take it one task at a time. If it gets really busy, I ask for help and keep talking with the team.",
+  tip:"Sebut cara konkret: tenang, urutkan tugas, komunikasi.",
+  kp:[["one task at a time", "I take it one task at a time", "Saya kerjakan satu per satu"], ["stay calm", "I stay calm", "Saya tetap tenang"]]},
+ {id:"u26",set:"umum",q:"Do you have a driver's licence?",iq:"Apakah kamu punya SIM?",
+  a:"Yes, I have a licence from Indonesia and an international driving permit. I can also get around by public transport.",
+  tip:"Jawab sesuai kondisimu. Kalau tidak punya: \"No, but I can get around by public transport.\"",
+  kp:[["licence", "I have a driver's licence", "Saya punya SIM"], ["get around", "I can get around by public transport", "Saya bisa bepergian dengan transportasi umum"]]},
+ {id:"u27",set:"umum",q:"Do you have a tax file number?",iq:"Apakah kamu punya nomor pajak (TFN)?",
+  a:"Yes, I do. I can give it to you on my first day, along with my bank details and super fund.",
+  tip:"TFN diberikan ke pemberi kerja agar pajak dipotong dengan benar.",
+  kp:[["tax file number", "I have a tax file number", "Saya punya TFN"], ["super fund", "my super fund details", "detail dana super saya"]]},
+ {id:"u28",set:"umum",q:"What do you like to do in your free time?",iq:"Apa yang kamu suka lakukan di waktu luang?",
+  a:"I enjoy exploring new places, cooking, and meeting new people. On weekends I like going to the beach.",
+  tip:"Pertanyaan santai. Jawab ringan, hindari hal yang terdengar malas atau berisiko.",
+  kp:[["free time", "In my free time, I enjoy...", "Di waktu luang, saya suka..."], ["exploring", "I enjoy exploring new places", "Saya suka menjelajahi tempat baru"]]},
+ {id:"f4",set:"farm",q:"Are you okay living in shared accommodation on the farm?",iq:"Apakah kamu oke tinggal di akomodasi bersama di farm?",
+  a:"Yes, I'm used to sharing. I keep my space clean and I respect other people's rest time.",
+  tip:"Tunjukkan sikap bisa hidup bersama.",
+  kp:[["used to sharing", "I'm used to sharing", "Saya terbiasa berbagi"], ["respect", "I respect other people's rest time", "Saya menghormati waktu istirahat orang lain"]]},
+ {id:"f5",set:"farm",q:"What would you do if you saw a safety hazard in the field?",iq:"Apa yang kamu lakukan jika melihat bahaya di lapangan?",
+  a:"I'd stop, tell my supervisor straight away, and keep others away from the area until it's fixed.",
+  tip:"Urutan: berhenti, lapor, jaga orang lain.",
+  kp:[["hazard", "a safety hazard", "bahaya keselamatan"], ["straight away", "I'd tell my supervisor straight away", "Saya langsung lapor ke supervisor"]]},
+ {id:"c4",set:"cafe",q:"What's the difference between a flat white and a latte?",iq:"Apa beda flat white dan latte?",
+  a:"A flat white has less froth and a stronger coffee taste, while a latte has more milk. I'm happy to learn your menu quickly.",
+  tip:"Jawab dasar-dasarnya lalu tunjukkan mau belajar.",
+  kp:[["froth", "less froth", "busa lebih sedikit"], ["menu", "I'm happy to learn your menu", "Saya senang mempelajari menumu"]]},
+ {id:"c5",set:"cafe",q:"What would you do if you made the wrong order?",iq:"Apa yang kamu lakukan jika salah membuat pesanan?",
+  a:"I'd apologise to the customer, remake it straight away, and double-check the next order so it doesn't happen again.",
+  tip:"Minta maaf, perbaiki, cegah terulang.",
+  kp:[["apologise", "I'd apologise", "Saya akan minta maaf"], ["remake", "I'd remake it straight away", "Saya buat ulang segera"]]},
+ {id:"h4",set:"clean",q:"What would you do if you found a guest's valuable item?",iq:"Apa yang kamu lakukan jika menemukan barang berharga tamu?",
+  a:"I'd hand it to my supervisor straight away and write down where I found it. I wouldn't keep it or touch anything else.",
+  tip:"Kejujuran adalah jawaban utama.",
+  kp:[["valuable", "a valuable item", "barang berharga"], ["hand it to", "I'd hand it to my supervisor", "Saya serahkan ke supervisor"]]},
+ {id:"h5",set:"clean",q:"How do you manage your time to clean a room quickly?",iq:"Bagaimana kamu mengatur waktu agar bisa membersihkan kamar dengan cepat?",
+  a:"I follow the same order every time: rubbish first, then dusting, bathroom, and floors last. That way I don't miss anything.",
+  tip:"Sebut urutan kerja yang konsisten.",
+  kp:[["same order", "I follow the same order", "Saya ikuti urutan yang sama"], ["miss anything", "I don't miss anything", "Tidak ada yang terlewat"]]},
+ {id:"w4",set:"gudang",q:"Do you have a white card?",iq:"Apakah kamu punya white card?",
+  a:"Not yet, but I'm happy to complete the induction before I start. Is there anything else I should get?",
+  tip:"Jujur jika belum punya, lalu tunjukkan kesiapan mengurusnya. Cek aturan terbaru di situs resmi.",
+  kp:[["induction", "complete the induction", "menyelesaikan induksi"], ["Not yet", "Not yet, but I'm happy to get one", "Belum, tapi saya siap mengurusnya"]]},
+ {id:"w5",set:"gudang",q:"What would you do if a coworker wasn't following the safety rules?",iq:"Apa yang kamu lakukan jika rekan tidak mengikuti aturan keselamatan?",
+  a:"I'd politely remind them first. If they kept doing it, I'd let my supervisor know, because safety comes first.",
+  tip:"Tegur sopan dulu, lalu laporkan jika berlanjut.",
+  kp:[["politely remind", "I'd politely remind them", "Saya ingatkan dengan sopan"], ["safety comes first", "Safety comes first", "Keselamatan nomor satu"]]},
+ {id:"r5",set:"retail",q:"How would you deal with an upset customer who wants a refund?",iq:"Bagaimana kamu menghadapi pelanggan kesal yang minta refund?",
+  a:"I'd listen carefully, say sorry for the trouble, and check our refund policy. If I can't approve it, I'd get my supervisor to help.",
+  tip:"Dengar, minta maaf, ikuti kebijakan, eskalasi jika perlu.",
+  kp:[["refund policy", "check the refund policy", "cek kebijakan pengembalian dana"], ["listen carefully", "I'd listen carefully", "Saya dengarkan dengan teliti"]]},
+ {id:"r6",set:"retail",q:"Are you available on weekends and public holidays?",iq:"Apakah kamu bisa bekerja di akhir pekan dan hari libur nasional?",
+  a:"Yes, I'm available most weekends and I'm happy to work public holidays. I'd just need a little notice.",
+  tip:"Jujur soal ketersediaan; jangan janji berlebihan.",
+  kp:[["available", "I'm available on weekends", "Saya bisa di akhir pekan"], ["notice", "I'd just need a little notice", "Saya hanya perlu pemberitahuan sebelumnya"]]},
 ];
 
 var DIALOGS=[
+
+ {id:'sapa',title:'Basa-basi: saling menyapa',a:'Jennifer',lines:[
+  ["A","Hello, how are you?","Halo, apa kabar?"],
+  ["B","Hello, I'm good, thanks. How are you, Jennifer?","Halo, saya baik, terima kasih. Kamu bagaimana, Jennifer?"],
+  ["A","Very well, thank you. Nice to see you.","Baik sekali, terima kasih. Senang bertemu."],
+  ["B","Nice to see you too.","Senang bertemu juga."],
+  ["A","How's it going?","Gimana kabarnya?"],
+  ["B","Not bad, thanks. Yourself?","Lumayan, terima kasih. Kamu sendiri?"]
+ ]},
+ {id:'pembuka',title:'Pembuka interview',a:'Pewawancara',lines:[
+  ["A","Hi there! Thanks for coming in. How's it going?","Hai! Terima kasih sudah datang. Apa kabar?"],
+  ["B","Hi, I'm good, thank you for asking. How are you?","Hai, saya baik, terima kasih sudah bertanya. Kamu bagaimana?"],
+  ["A","I'm good, thanks. Did you find the place okay?","Baik, terima kasih. Apakah kamu menemukan tempatnya dengan mudah?"],
+  ["B","Yes, no worries. Thank you for having me.","Ya, tidak masalah. Terima kasih sudah menerima saya."],
+  ["A","Please, have a seat. Shall we get started?","Silakan duduk. Kita mulai?"],
+  ["B","Sure, thank you.","Tentu, terima kasih."]
+ ]},
+ {id:'lamar',title:'Tanya lowongan langsung (bawa CV)',a:'Pemilik kafe',lines:[
+  ["A","Hi, how can I help you?","Hai, ada yang bisa dibantu?"],
+  ["B","Hi, sorry to bother you. Are you currently hiring?","Hai, maaf mengganggu. Apakah kalian sedang membuka lowongan?"],
+  ["A","Yeah, we might be. Did you bring your resume?","Mungkin ya. Kamu membawa CV?"],
+  ["B","Yes, I brought it with me. Here you go.","Ya, saya membawanya. Ini, silakan."],
+  ["A","Thanks. Do you have any experience?","Terima kasih. Kamu punya pengalaman?"],
+  ["B","Yeah, I worked at a cafe in Indonesia before.","Ya, saya pernah bekerja di kafe di Indonesia."],
+  ["A","Great. What's your phone number?","Bagus. Berapa nomor teleponmu?"],
+  ["B","It's on the resume, at the top.","Ada di CV, di bagian atas."],
+  ["A","Perfect. We're gonna give you a call, alright?","Pas. Kami akan menghubungimu, ya?"],
+  ["B","Sounds good. Thanks so much!","Siap. Terima kasih banyak!"]
+ ]},
+ {id:"cuaca",title:"Basa-basi: cuaca & akhir pekan",a:"Rekan kerja",lines:[
+  ["A", "Morning! Hot enough for you today?", "Pagi! Panas sekali ya hari ini?"],
+  ["B", "Morning! Yeah, it's a scorcher. I'm still getting used to the heat.", "Pagi! Ya, panas terik. Saya masih membiasakan diri dengan panasnya."],
+  ["A", "Tell me about it. Did you get up to anything on the weekend?", "Betul sekali. Kamu ngapain saja akhir pekan kemarin?"],
+  ["B", "Not much. I went to the beach for a bit. How about you?", "Tidak banyak. Saya ke pantai sebentar. Kamu bagaimana?"],
+  ["A", "Just a barbie with the family. Anyway, better get to work!", "Cuma barbekyu bersama keluarga. Ya sudah, waktunya kerja!"],
+  ["B", "Yeah, no worries. Catch you later.", "Ya, siap. Sampai nanti."]
+ ]},
+ {id:"pendatang",title:"Basa-basi: baru di Australia",a:"Pewawancara",lines:[
+  ["A", "So, how long have you been in Australia?", "Jadi, sudah berapa lama kamu di Australia?"],
+  ["B", "I've been here for about two months.", "Saya sudah di sini sekitar dua bulan."],
+  ["A", "Nice! Are you enjoying it so far?", "Bagus! Apakah kamu menikmatinya sejauh ini?"],
+  ["B", "Yes, I love it. The people are really friendly.", "Ya, saya suka sekali. Orang-orangnya ramah sekali."],
+  ["A", "And where are you from in Indonesia?", "Dan kamu dari mana di Indonesia?"],
+  ["B", "I'm from Java. Have you ever been to Indonesia?", "Saya dari Jawa. Pernahkah kamu ke Indonesia?"],
+  ["A", "I went to Bali years ago. Beautiful place.", "Saya pernah ke Bali beberapa tahun lalu. Tempat yang indah."]
+ ]},
+ {id:"tawaran",title:"Basa-basi: ditawari minum",a:"Resepsionis",lines:[
+  ["A", "Hi there, you must be {name}. Did you find us okay?", "Hai, kamu pasti {name}. Apakah kamu menemukan kami dengan mudah?"],
+  ["B", "Yes, no worries. It was easy to find. Thank you.", "Ya, tidak masalah. Mudah ditemukan. Terima kasih."],
+  ["A", "Great. Can I get you a glass of water or a coffee?", "Bagus. Mau segelas air atau kopi?"],
+  ["B", "A glass of water would be great, thanks.", "Segelas air boleh, terima kasih."],
+  ["A", "Sure. Have a seat, and Dave will be with you in a minute.", "Tentu. Silakan duduk, Dave akan segera menemui kamu."],
+  ["B", "Thank you very much.", "Terima kasih banyak."]
+ ]},
+ {id:"kenalan",title:"Kenalan dengan manajer",a:"Manajer",lines:[
+  ["A", "Hi, I'm Dave. Nice to meet you.", "Hai, saya Dave. Senang bertemu denganmu."],
+  ["B", "Nice to meet you, Dave. I'm {name}.", "Senang bertemu denganmu, Dave. Saya {name}."],
+  ["A", "Thanks for coming in, {name}. How's your day going?", "Terima kasih sudah datang, {name}. Bagaimana harimu?"],
+  ["B", "It's going well, thanks. How about yours?", "Baik, terima kasih. Kalau harimu?"],
+  ["A", "Busy, but good. Shall we get started?", "Sibuk, tapi baik. Kita mulai?"],
+  ["B", "Yes, sure. I'm ready when you are.", "Ya, tentu. Saya siap kapan saja."]
+ ]},
+ {id:"pamit",title:"Pamitan setelah interview",a:"Pewawancara",lines:[
+  ["A", "Well, that's all from me. Thanks for your time today.", "Baik, itu saja dari saya. Terima kasih atas waktumu hari ini."],
+  ["B", "Thank you so much for having me. It was great to meet you.", "Terima kasih banyak sudah menerima saya. Senang sekali bertemu denganmu."],
+  ["A", "We'll be in touch by the end of the week.", "Kami akan menghubungimu paling lambat akhir pekan ini."],
+  ["B", "Sounds good. I look forward to hearing from you.", "Siap. Saya menantikan kabar darimu."],
+  ["A", "Great. Have a good one!", "Bagus. Semoga harimu menyenangkan!"],
+  ["B", "You too. Have a good day!", "Kamu juga. Semoga harimu menyenangkan!"]
+ ]},
  {id:'kafe',title:'Pesan kopi di kafe',a:'Barista',lines:[
   ["A","G'day! What can I get you today?","Halo! Mau pesan apa hari ini?"],
   ["B","Hi, could I get a flat white, please?","Hai, boleh saya pesan flat white?"],
@@ -865,11 +1140,13 @@ function diffHtml(target,typed){
 
 /* ============ SRS (gaya Anki / SM-2) ============ */
 function newItem(){return {st:'new',ease:2.5,ivl:0,step:0,due:0,reps:0,lapses:0,seen:''};}
-function applyGrade(it,g){
+function applyGrade(it,g,cnt){
   var t=Date.now();
+  /* cnt=true (kartu Anki): ulang berdasarkan jumlah kartu, bukan menit. Selain itu: berdasarkan waktu */
+  function soon(k,mins){if(cnt){it.k=k;it.back=(A.n||0)+k;it.due=t;}else{it.due=t+mins*MIN;}}
   function grad(days){it.st='review';it.ivl=days;it.step=0;it.due=addDays(t,days);}
   if(it.st==='review'){
-    if(g===1){it.lapses++;it.ease=Math.max(1.3,it.ease-0.2);it.ivl=Math.max(1,Math.round(it.ivl*0.4));it.st='relearn';it.step=0;it.due=t+10*MIN;}
+    if(g===1){it.lapses++;it.ease=Math.max(1.3,it.ease-0.2);it.ivl=Math.max(1,Math.round(it.ivl*0.4));it.st='relearn';it.step=0;soon(3,10);}
     else{
       var n;
       if(g===2){n=Math.max(it.ivl+1,Math.round(it.ivl*1.2));it.ease=Math.max(1.3,it.ease-0.15);}
@@ -878,26 +1155,27 @@ function applyGrade(it,g){
       it.reps++;grad(n);
     }
   }else if(it.st==='relearn'){
-    if(g<=2){it.due=t+10*MIN;}else{grad(g===4?Math.max(2,it.ivl+1):Math.max(1,it.ivl));}
+    if(g<=2){soon(4,10);}else{grad(g===4?Math.max(2,it.ivl+1):Math.max(1,it.ivl));}
   }else{
     if(it.st==='new')it.st='learn';
-    if(g===1){it.step=0;it.due=t+MIN;}
-    else if(g===2){it.due=t+(it.step===0?6:10)*MIN;}
-    else if(g===3){if(it.step===0){it.step=1;it.due=t+10*MIN;}else{it.reps++;grad(1);}}
+    if(g===1){it.step=0;soon(3,1);}
+    else if(g===2){soon(5,it.step===0?6:10);}
+    else if(g===3){if(it.step===0){it.step=1;soon(8,10);}else{it.reps++;grad(1);}}
     else{it.reps++;grad(4);}
   }
   return it;
 }
-function fmtLabel(it){
+function fmtLabel(it,cnt){
+  if(cnt&&(it.st==='learn'||it.st==='relearn')){return '\u00b1'+it.k+' kartu';}
   if(it.st==='learn'||it.st==='relearn'){return Math.max(1,Math.round((it.due-Date.now())/MIN))+' mnt';}
   if(it.ivl<30)return it.ivl+' hari';
   if(it.ivl<365)return (it.ivl/30).toFixed(1).replace('.0','')+' bln';
   return (it.ivl/365).toFixed(1)+' thn';
 }
-function preview(it0,g){var c=JSON.parse(JSON.stringify(it0));applyGrade(c,g);return fmtLabel(c);}
+function preview(it0,g,cnt){var c=JSON.parse(JSON.stringify(it0));applyGrade(c,g,cnt);return fmtLabel(c,cnt);}
 function rateItem(id,g,counter){
   var it=S.srs[id],was=!it;if(!it){it=newItem();S.srs[id]=it;}
-  applyGrade(it,g);it.seen=dayKey();
+  applyGrade(it,g,counter==='anki');it.seen=dayKey();
   var d=dayRec();
   if(counter==='anki'){d.rv++;if(was)d.nw++;}else{d[counter]++;}
   save();
@@ -929,17 +1207,19 @@ function buildQueue(){
   deckCards().forEach(function(c){dirs.forEach(function(dir){
     var id=c.id+':'+dir,x={id:id,c:c,dir:dir},it=S.srs[id],sib=S.srs[c.id+':'+(dir==='p'?'r':'p')],buried=!!(sib&&sib.seen===today);
     if(!it){if(!buried)fresh.push(x);}
-    else if(it.st==='learn'||it.st==='relearn'){(it.due<=t?learn:wait).push([it.due,x]);}
+    else if(it.st==='learn'||it.st==='relearn'){learn.push([it.back||0,x]);}
     else if(it.due<=t&&!buried){rev.push([it.due,x]);}
   });});
   learn.sort(function(a,b){return a[0]-b[0];});rev.sort(function(a,b){return a[0]-b[0];});wait.sort(function(a,b){return a[0]-b[0];});
   return {learn:learn,rev:rev,fresh:fresh,wait:wait};
 }
 function pickNext(){
-  var q=buildQueue();
-  if(q.learn.length)return q.learn[0][1];
+  /* kartu Lagi/Sulit kembali setelah beberapa kartu lain (hitungan kartu, bukan menit) */
+  var q=buildQueue(),n=A.n||0,due=q.learn.filter(function(e){return e[0]<=n;});
+  if(due.length)return due[0][1];
   if(q.rev.length)return q.rev[0][1];
   if(q.fresh.length&&newLeft()>0)return q.fresh[0];
+  if(q.learn.length)return q.learn[0][1];
   return null;
 }
 function saveCard(en,idn,note){
@@ -950,7 +1230,7 @@ function saveCard(en,idn,note){
 }
 
 /* ============ ROUTING ============ */
-var TABS=['beranda','anki','interview','dialog','metode'];
+var TABS=['beranda','anki','interview','dialog','contoh','metode'];
 var tab=(function(){var h=location.hash.slice(1);return TABS.indexOf(h)>=0?h:'beranda';})();
 function leave(){D.tok++;stopSpeak();stopListen();clearInterval(I.timerId);I.timerId=null;MIC.err='';}
 window.addEventListener('hashchange',function(){
@@ -963,7 +1243,7 @@ function go(t){
 }
 
 /* ============ ANKI VIEW ============ */
-var A={active:false,cur:null,shown:false,heard:'',match:null};
+var A={active:false,cur:null,shown:false,heard:'',match:null,n:0};
 function ankiNext(){
   A.cur=pickNext();A.shown=false;A.heard='';A.match=null;MIC.err='';
   render();
@@ -979,6 +1259,7 @@ function ankiShow(){
 function ankiGrade(g){
   if(!A.cur||!A.shown)return;
   stopSpeak();stopListen();
+  A.n=(A.n||0)+1;
   rateItem(A.cur.id,g,'anki');
   ankiNext();
 }
@@ -1039,7 +1320,7 @@ function vAnki(){
   }
   var foot=!A.shown?'<button class="btn pri" style="width:100%" data-act="a-show">Tunjukkan jawaban <span class="chip">Spasi</span></button>':
     '<div class="grade">'+[[1,'Lagi','a'],[2,'Sulit','h'],[3,'Bagus','o'],[4,'Mudah','e']].map(function(g){
-      return '<button class="g '+g[2]+'" data-act="a-grade" data-g="'+g[0]+'"><span class="t">'+g[1]+'</span><span class="i">'+preview(it,g[0])+'</span></button>';}).join('')+'</div>';
+      return '<button class="g '+g[2]+'" data-act="a-grade" data-g="'+g[0]+'"><span class="t">'+g[1]+'</span><span class="i">'+preview(it,g[0],true)+'</span></button>';}).join('')+'</div>';
   return head+body+micNote()+foot;
 }
 
@@ -1057,8 +1338,9 @@ function ivStart(setId){
   var ids;
   if(setId==='sim'){
     var u=shuffle(IV_Q.filter(function(q){return q.set==='umum';})).slice(0,6).map(function(q){return q.id;});
-    var o=shuffle(IV_Q.filter(function(q){return q.set!=='umum';})).slice(0,2).map(function(q){return q.id;});
-    ids=shuffle(u.concat(o));
+    var o=shuffle(IV_Q.filter(function(q){return q.set!=='umum'&&q.set!=='basa';})).slice(0,2).map(function(q){return q.id;});
+    var bs=shuffle(IV_Q.filter(function(q){return q.set==='basa';})).slice(0,2).map(function(q){return q.id;});
+    ids=bs.concat(shuffle(u.concat(o)));
   }else{ids=ivOrder(IV_Q.filter(function(q){return q.set===setId;}).map(function(q){return q.id;}));}
   I.set=setId;I.order=ids;I.idx=0;I.results=[];I.view='run';
   ivReset();render();ivSayQ();
@@ -1341,16 +1623,55 @@ function vBackup(){
    '<div class="row">'+(R.restore?'<span class="note">Ini menimpa progres di browser ini. Lanjutkan?</span><button class="btn sm rec" data-act="bk-restore">Ya, pulihkan</button><button class="btn sm" data-act="bk-no">Batal</button>':'<button class="btn sm" data-act="bk-ask">Pulihkan</button>')+'</div></div>';
 }
 
+
+/* ============ CONTOH (template percakapan) ============ */
+var T={mode:'iv',set:'all'};
+function copyText(txt){
+  function bad(){toast('Tidak bisa menyalin otomatis. Tahan teks lalu salin manual.');}
+  try{navigator.clipboard.writeText(txt).then(function(){toast('Disalin');},bad);}catch(e){bad();}
+}
+function ivById(id){return IV_Q.filter(function(q){return q.id===id;})[0];}
+function dgById(id){return DIALOGS.filter(function(d){return d.id===id;})[0];}
+function tpDet(id,summary,body){return '<details class="panel tp" data-det="t-'+id+'"'+(R.det['t-'+id]?' open':'')+'><summary>'+summary+'</summary>'+body+'</details>';}
+function vContoh(){
+  var iv=T.mode==='iv';
+  var head='<div class="panel hero"><div class="lbl">Template percakapan</div><h1>Contoh tanya-jawab</h1>'+
+   '<p class="muted">Buka satu per satu, dengarkan, lalu salin atau latih. Nama dan pekerjaan terisi otomatis dari profilmu.</p>'+
+   '<div class="seg"><button data-act="tp-mode" data-m="iv" class="'+(iv?'on':'')+'">Interview kerja</button><button data-act="tp-mode" data-m="dg" class="'+(iv?'':'on')+'">Dialog sehari-hari</button></div>'+
+   (iv?'<div class="row">'+[{id:'all',name:'Semua'}].concat(IV_SETS).map(function(s){return '<button class="btn sm '+(T.set===s.id?'pri':'')+'" data-act="tp-set" data-s="'+s.id+'">'+esc(s.name)+'</button>';}).join('')+'</div>':'')+'</div>';
+  var list;
+  if(iv){
+    list=IV_Q.filter(function(q){return T.set==='all'||q.set===T.set;}).map(function(q){
+      var kp=(q.kp||[]).map(function(k){return '<li><b>'+esc(fill(k[1]))+'</b> <span class="muted">'+esc(k[2])+'</span></li>';}).join('');
+      return tpDet(q.id,'<span class="sq"><b>'+esc(q.q)+'</b><small>'+esc(q.iq)+'</small></span>',
+       '<div class="chat"><div class="bub"><div class="lbl">Pewawancara</div>'+esc(q.q)+'<div class="note">'+esc(q.iq)+'</div></div>'+
+       '<div class="bub me"><div class="lbl">Jawabanmu</div>'+esc(fill(q.a))+'</div></div>'+
+       '<div class="row"><button class="btn sm" data-act="tp-say" data-q="'+q.id+'" data-w="q">'+IC.spk+'Pertanyaan</button><button class="btn sm pri" data-act="tp-say" data-q="'+q.id+'" data-w="a">'+IC.spk+'Jawaban</button><button class="btn sm" data-act="tp-copy" data-q="'+q.id+'">Salin</button><button class="btn sm acc" data-act="tp-ivprac" data-q="'+q.id+'">Latih</button></div>'+
+       '<p class="note">Tip: '+esc(q.tip)+'</p>'+(kp?'<div class="lbl">Frasa kunci</div><ul class="kpl">'+kp+'</ul>':''));
+    }).join('');
+  }else{
+    list=DIALOGS.map(function(d){
+      var bubs=d.lines.map(function(l,i){var me=l[0]==='B';
+        return '<div class="bub '+(me?'me':'')+'"><div class="lbl">'+esc(me?'Kamu':d.a)+'</div><b>'+esc(fill(l[1]))+'</b><div class="note">'+esc(fill(l[2]))+'</div>'+
+         '<button class="btn sm ghost" data-act="tp-say" data-d="'+d.id+'" data-i="'+i+'" aria-label="Dengar">'+IC.spk+'</button></div>';}).join('');
+      return tpDet('d-'+d.id,'<span class="sq"><b>'+esc(d.title)+'</b><small>Lawan bicara: '+esc(d.a)+' &middot; '+d.lines.length+' kalimat</small></span>',
+       '<div class="chat">'+bubs+'</div><div class="row"><button class="btn sm" data-act="tp-copy" data-d="'+d.id+'">Salin dialog</button><button class="btn sm acc" data-act="tp-dgprac" data-id="'+d.id+'">Latih dialog ini</button></div>');
+    }).join('');
+  }
+  return head+'<div class="todos">'+list+'</div>';
+}
+
 /* ============ METODE ============ */
 function vMetode(){
   return '<div class="panel"><div class="lbl">Cara kerja</div><h1>Kenapa latihannya begini</h1>'+
   '<div class="prose">'+
-  '<h3>1. Kartu Anki berbasis kalimat utuh</h3><p>Otak mengingat potongan kalimat (chunk) lebih mudah daripada kata lepas. Kartu memakai spaced repetition SM-2: kartu yang sulit muncul lagi dalam menit, yang mudah dalam hari, minggu, lalu bulan. Tombol <b>Lagi / Sulit / Bagus / Mudah</b> menentukan jarak ulang berikutnya.</p>'+
+  '<h3>1. Kartu Anki berbasis kalimat utuh</h3><p>Otak mengingat potongan kalimat (chunk) lebih mudah daripada kata lepas. Kartu memakai spaced repetition SM-2: kartu yang sulit muncul lagi setelah beberapa kartu berikutnya di sesi yang sama (bukan menunggu menit), yang mudah dalam hari, minggu, lalu bulan. Tombol <b>Lagi / Sulit / Bagus / Mudah</b> menentukan jarak ulang berikutnya.</p>'+
   '<h3>2. Active recall: ucapkan dulu, baru balik kartu</h3><p>Kartu Bicara menunjukkan arti Indonesia. Ucapkan jawaban Inggrismu keras-keras sebelum menekan Tunjukkan jawaban. Usaha mengingat itulah yang membuat hafalan menempel.</p>'+
   '<h3>3. Kartu Dengar melatih telinga</h3><p>Audio diputar tanpa teks. Kamu mengartikan dari suara saja, seperti situasi nyata di kasir atau telepon.</p>'+
   '<h3>4. Shadowing</h3><ul><li>Dengar satu kalimat (0.85x), lalu ucapkan segera dengan irama dan nada yang sama.</li><li>Ulangi sampai terasa mirip, lalu naikkan ke 1x.</li><li>Fokus pada penekanan kata dan penyambungan bunyi, bukan hanya kata benar.</li></ul>'+
   '<h3>5. Dikte</h3><p>Mengetik apa yang kamu dengar membongkar bagian yang sering terlewat: kata kecil, akhiran, dan bunyi yang menyatu (misalnya "gonna", "wanna", "heaps of").</p>'+
   '<h3>6. Roleplay dan metode STAR untuk interview</h3><ul><li><b>S</b>ituation: apa keadaannya.</li><li><b>T</b>ask: tugasmu.</li><li><b>A</b>ction: yang kamu lakukan.</li><li><b>R</b>esult: hasilnya.</li></ul><p>Empat kalimat sudah cukup untuk pertanyaan perilaku seperti "ceritakan saat kamu menghadapi situasi sulit".</p>'+
+  '<h3>Jangan lewatkan basa-basi di awal</h3><ul><li>Mulai selalu dengan sapaan: \"Hi, how are you?\" Balas, lalu <b>tanya balik</b> (\"I\'m good, thanks. How are you?\").</li><li>Di interview, ucapkan \"Thank you for having me\" dan tutup dengan \"Thank you for your time\".</li><li>Saat melamar langsung, siapkan CV dan nomor telepon. Pakai lampau: \"I <b>brought</b> it\" dan \"I <b>worked</b> at a cafe\", bukan \"bring\" atau \"work\".</li></ul>'+
   '<h3>Tips aksen dan istilah Aussie</h3><ul><li>Penutur Australia suka memendekkan kata: arvo (afternoon), brekkie (breakfast), servo (service station).</li><li>Kalimat sering dinaikkan nadanya di akhir, bahkan untuk pernyataan. Itu normal.</li><li>"No worries" dipakai untuk "sama-sama", "tidak apa-apa", dan "boleh".</li></ul>'+
   '<h3>Catatan penting</h3><ul><li>Aturan visa (misalnya batas bekerja dengan satu pemberi kerja) bisa berubah. Cek <a href="https://immi.homeaffairs.gov.au" target="_blank" rel="noopener">immi.homeaffairs.gov.au</a> sebelum menjawab soal visa di wawancara.</li><li>Jawaban contoh hanyalah contoh. Sesuaikan dengan kisahmu yang benar, jangan mengaku punya pengalaman yang tidak ada.</li><li>Pengenalan suara hanya bekerja jika browser mengizinkan mikrofon. Jika diblokir, ucapkan keras-keras lalu nilai dirimu sendiri.</li></ul>'+
   '</div></div>';
@@ -1358,7 +1679,7 @@ function vMetode(){
 
 /* ============ RENDER & EVENTS ============ */
 function render(){
-  var v={beranda:vHome,anki:vAnki,interview:vIv,dialog:vDg,metode:vMetode}[tab];
+  var v={beranda:vHome,anki:vAnki,interview:vIv,dialog:vDg,contoh:vContoh,metode:vMetode}[tab];
   var app=$('#app'),key=tab+'|'+(tab==='dialog'?D.id:'')+(tab==='interview'?I.view:'')+(tab==='anki'?A.active:'');
   app.innerHTML=v();
   if(key!==render._k){render._k=key;app.classList.remove('enter');void app.offsetWidth;app.classList.add('enter');}
@@ -1366,6 +1687,18 @@ function render(){
 }
 
 var ACT={
+ 'tp-mode':function(b){T.mode=b.dataset.m;render();},
+ 'tp-set':function(b){T.set=b.dataset.s;render();},
+ 'tp-say':function(b){
+   if(b.dataset.q){var q=ivById(b.dataset.q);if(q)speak(b.dataset.w==='a'?q.a:q.q,{role:b.dataset.w==='a'?1:0});}
+   else{var d=dgById(b.dataset.d),l=d&&d.lines[+b.dataset.i];if(l)speak(l[1],{role:l[0]==='B'?1:0});}
+ },
+ 'tp-copy':function(b){
+   if(b.dataset.q){var q=ivById(b.dataset.q);if(q)copyText('Q: '+q.q+'\nA: '+fill(q.a));}
+   else{var d=dgById(b.dataset.d);if(d)copyText(d.title+'\n'+d.lines.map(function(l){return (l[0]==='B'?'Kamu':d.a)+': '+fill(l[1]);}).join('\n'));}
+ },
+ 'tp-dgprac':function(b){dgOpen(b.dataset.id,'listen');go('dialog');},
+ 'tp-ivprac':function(b){var q=ivById(b.dataset.q);if(!q)return;ivStart(q.set);I.order=[q.id];I.idx=0;go('interview');},
  'say-test':function(){speak("G'day mate, how are you going? Nice to meet you.");},
  'reset-ask':function(){R.confirm=true;render();},
  'reset-no':function(){R.confirm=false;render();},
@@ -1379,7 +1712,7 @@ var ACT={
  deck:function(b){S.settings.deck=b.dataset.id;save();render();},
  mode:function(b){S.settings.mode=b.dataset.m;save();render();},
  npd:function(b){S.settings.newPerDay=+b.dataset.n;save();render();},
- 'a-start':function(){A.active=true;ankiNext();},
+ 'a-start':function(){A.active=true;A.n=0;ankiNext();},
  'a-exit':function(){stopSpeak();stopListen();A.active=false;A.cur=null;render();},
  'a-show':function(){ankiShow();},
  'a-grade':function(b){ankiGrade(+b.dataset.g);},
